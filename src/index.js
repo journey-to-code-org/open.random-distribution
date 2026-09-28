@@ -1,0 +1,3 @@
+function rng(r){if(typeof r!=="function")throw new TypeError("Expected rng function");return r;}
+export function uniform(min=0,max=1,random=Math.random){rng(random);if(typeof min!=="number"||typeof max!=="number"||max<min)throw new RangeError("Invalid range");return min+(max-min)*random();}
+export function normal(mean=0,stddev=1,random=Math.random){rng(random);if(typeof mean!=="number"||typeof stddev!=="number"||stddev<0)throw new RangeError("Invalid parameters");let u1=0,u2=0;while(u1===0)u1=random();while(u2===0)u2=random();const z=Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);return mean+z*stddev;}
